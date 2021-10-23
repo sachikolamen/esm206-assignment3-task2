@@ -59,7 +59,12 @@ Make sure to `View()` the resulting data frame (remember: run `View()` in the Co
 ```{r}
 # Your code here: 
 
+sw_split_name <- starwars %>%
+  separate(col = name, # Separate the names column
+           into = c("name_1","name_2"), # Into two columns 'name_1' & 'name_2'
+           sep = "-")
 
+# Row 49 name = Ki-Adi-Mundi turns into name_1: Ki, name_2: Adi
 ```
 
 #### 1B. Follow me
@@ -93,7 +98,12 @@ Make sure to `View()` the resulting data frame (remember: run `View()` in the Co
 ```{r}
 # Your code here:
 
-
+sw_skin_sep <- starwars %>%
+  separate(col = skin_color,
+           into = c("skin_1", "skin_2"),
+           sep = ",",
+           extra = "merge",
+           remove = FALSE)
 ```
 
 ### 2. `tidyr::unite()`
@@ -129,6 +139,10 @@ In the code chunk below, starting from the `mpg` data create a new data frame ca
 ```{r}
 # Your code here: 
 
+mpg_model_class <- mpg %>%
+  unite(col = model_class,
+        c(model, class),
+        sep = "WOOPWOOP")
 
 ```
 
@@ -159,7 +173,9 @@ In the code chunk below, use `ymd()` to convert a date that you choose in `YYYY-
 ```{r}
 # Your code here: 
 
-
+ymd("1995-08-02")
+ymd("1995/08/02")
+ymd(19950802)
 ```
 
 #### 3B. Follow me
