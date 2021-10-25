@@ -14,25 +14,25 @@ library(lubridate)
 
 ## BEFORE YOU START: Save a renamed copy of this .Rmd
 
-- Before moving on, click **File > Save As** to save a copy of this .Rmd that is updated with your first and last name in the file name (`a3_task2_firstname_lastname.Rmd`). 
+-   Before moving on, click **File \> Save As** to save a copy of this .Rmd that is updated with your first and last name in the file name (`a3_task2_firstname_lastname.Rmd`).
 
-- Once you have saved your copy of the .Rmd, you can delete the generic original (if you want...or just leave it there) 
+-   Once you have saved your copy of the .Rmd, you can delete the generic original (if you want...or just leave it there)
 
-- Run the setup chunk to get the `tidyverse` & `lubridate` packages attached (`lubridate` is a package to make it a bit easier to work with dates & times)
+-   Run the setup chunk to get the `tidyverse` & `lubridate` packages attached (`lubridate` is a package to make it a bit easier to work with dates & times)
 
 ## Follow along examples
 
-In the following sections, you will first see and run a complete example to learn how a function (or combination of functions) works for data wrangling or visualization. Then, in the paired code chunk immediately below it, you will do it on your own for a new task. 
+In the following sections, you will first see and run a complete example to learn how a function (or combination of functions) works for data wrangling or visualization. Then, in the paired code chunk immediately below it, you will do it on your own for a new task.
 
-All examples use built-in datasets in R, so you will not load any data for this task. 
+All examples use built-in datasets in R, so you will not load any data for this task.
 
 ### 1. `tidyr::separate()`
 
-The `separate()` function in the `tidyr` package (part of the `tidyverse`) is used to "separate a character column into multiple columns." For the examples below, you will use the `starwars` dataset, which is automatically loaded as part of `dplyr` when you attach the `tidyverse`. Run `View(starwars)` in the Console to see and familiarize yourself with the `starwars` data. 
+The `separate()` function in the `tidyr` package (part of the `tidyverse`) is used to "separate a character column into multiple columns." For the examples below, you will use the `starwars` dataset, which is automatically loaded as part of `dplyr` when you attach the `tidyverse`. Run `View(starwars)` in the Console to see and familiarize yourself with the `starwars` data.
 
-#### 1A. Follow me 
+#### 1A. Follow me
 
-Read and run the code chunk below. Make sure you understand what the code is doing (comments added to get you started), and compare the input `starwars` dataset with the output. 
+Read and run the code chunk below. Make sure you understand what the code is doing (comments added to get you started), and compare the input `starwars` dataset with the output.
 
 ```{r}
 # Run this code: 
@@ -54,7 +54,7 @@ In the code chunk below, write code to create a new data frame called `sw_split_
 
 Make sure to `View()` the resulting data frame (remember: run `View()` in the Console, or click on the object name in the Environment) to ensure it worked as expected.
 
-**Note: You should get a warning about one piece dropped. What happens to the name in Row 49, which contains two dashes?
+\*\*Note: You should get a warning about one piece dropped. What happens to the name in Row 49, which contains two dashes?
 
 ```{r}
 # Your code here: 
@@ -69,12 +69,12 @@ sw_split_name <- starwars %>%
 
 #### 1B. Follow me
 
-There are other options (arguments within the function) to extend what you can do with `separate()`. The code below shows two additional options: 
+There are other options (arguments within the function) to extend what you can do with `separate()`. The code below shows two additional options:
 
-- Use `extra = "merge"` to split at the first separator, but merge everything following into the second column
-- Use `remove = FALSE` to keep the original column (default is to remove it)
+-   Use `extra = "merge"` to split at the first separator, but merge everything following into the second column
+-   Use `remove = FALSE` to keep the original column (default is to remove it)
 
-Run the code below, and check the output, to see how it works: 
+Run the code below, and check the output, to see how it works:
 
 ```{r}
 # Run this code: 
@@ -91,7 +91,7 @@ sw_sep_names <- starwars %>% # Start from starwars data
 
 #### 1B. On your own
 
-In the code chunk below, write code to create a new data frame called `sw_skin_sep` that starts from `starwars`, separates the `skin_color` column into two columns `skin_1` and `skin_2` at the first *comma*, merging everything after the first comma into the second column and keeping the original `skin_color` column. 
+In the code chunk below, write code to create a new data frame called `sw_skin_sep` that starts from `starwars`, separates the `skin_color` column into two columns `skin_1` and `skin_2` at the first *comma*, merging everything after the first comma into the second column and keeping the original `skin_color` column.
 
 Make sure to `View()` the resulting data frame (remember: run `View()` in the Console, or click on the object name in the Environment) to ensure it worked as expected.
 
@@ -108,15 +108,15 @@ sw_skin_sep <- starwars %>%
 
 ### 2. `tidyr::unite()`
 
-The `unite()` function in the `tidyr` package (part of the `tidyverse`) is useful to "unite multiple columns into one." For the examples below, you will use the built-in `mpg` dataset. 
+The `unite()` function in the `tidyr` package (part of the `tidyverse`) is useful to "unite multiple columns into one." For the examples below, you will use the built-in `mpg` dataset.
 
-In the Console, run `View(mpg)` to check out the data. 
+In the Console, run `View(mpg)` to check out the data.
 
 #### 2A. Follow me
 
-In the following code chunk, I combine the `manufacturer` and `model` columns into a single column `make_model`: 
+In the following code chunk, I combine the `manufacturer` and `model` columns into a single column `make_model`:
 
-Check the output after running the code. 
+Check the output after running the code.
 
 ```{r}
 # Run this code:
@@ -148,11 +148,11 @@ mpg_model_class <- mpg %>%
 
 ### 3. Parsing dates with `lubridate()`
 
-The [`lubridate`](https://lubridate.tidyverse.org/) R package contains "functions to work with date-times." 
+The [`lubridate`](https://lubridate.tidyverse.org/) R package contains "functions to work with date-times."
 
 #### 3A. Follow me
 
-Run the code below to see how the `lubridate::ymd()` function (and variants) can recognize and convert dates in various forms into a class ("Date") that R understands. **NOTE**: I use `ymd()` here because the order of the elements is in *Year* - *Month* - *Day*. 
+Run the code below to see how the `lubridate::ymd()` function (and variants) can recognize and convert dates in various forms into a class ("Date") that R understands. **NOTE**: I use `ymd()` here because the order of the elements is in *Year* - *Month* - *Day*.
 
 ```{r}
 # Run the following lines of code, which contain dates in order of Year-Month-Day in different formats: 
@@ -168,7 +168,7 @@ ymd("2020/11/18")
 
 #### 3A. On your own
 
-In the code chunk below, use `ymd()` to convert a date that you choose in `YYYY-MM-DD`, `YYYY/MM/DD` and `YYYYMMDD` form to a Date class: 
+In the code chunk below, use `ymd()` to convert a date that you choose in `YYYY-MM-DD`, `YYYY/MM/DD` and `YYYYMMDD` form to a Date class:
 
 ```{r}
 # Your code here: 
@@ -180,7 +180,7 @@ ymd(19950802)
 
 #### 3B. Follow me
 
-We can also convert a collection of values to dates. In this code, I combine three dates using `c()`, then help R understand them as dates using `lubridate::mdy()`. Note: I use `mdy()` here because these dates are in order of *Month* - *Day* - *Year*! 
+We can also convert a collection of values to dates. In this code, I combine three dates using `c()`, then help R understand them as dates using `lubridate::mdy()`. Note: I use `mdy()` here because these dates are in order of *Month* - *Day* - *Year*!
 
 ```{r}
 # Run these lines of code: 
@@ -196,19 +196,22 @@ class(my_dates_converted) # Check the class
 
 #### 3B. On your own
 
-In the code chunk below, create a vector (using `c()`, as above) stored as `some_dates` that contains three values that represent dates as numbers, in mdy format: 11061972, 02142007,01301843. Then in the next line, use `lubridate::mdy()` to return them in date format, storing as a vector `some_dates_converted`. Write a third line to check the class of that vector. 
+In the code chunk below, create a vector (using `c()`, as above) stored as `some_dates` that contains three values that represent dates as numbers, in mdy format: 11061972, 02142007,01301843. Then in the next line, use `lubridate::mdy()` to return them in date format, storing as a vector `some_dates_converted`. Write a third line to check the class of that vector.
 
 ```{r}
 # Your code here: 
 
+some_dates <- c(12312015, 03052009, 05201995)
+some_dates_converted <- myd(some_dates)
 
+class(some_dates_converted)
 ```
 
 #### 3C. Follow me
 
-In the example below, we'll use the built-in `lakers` dataset from the `lubridate` package. Take a look at the data with `View(lakers)` in the Console, and run `?lakers` in the Console to see more information in the "Help" tab. 
+In the example below, we'll use the built-in `lakers` dataset from the `lubridate` package. Take a look at the data with `View(lakers)` in the Console, and run `?lakers` in the Console to see more information in the "Help" tab.
 
-In this example, I use `ymd()` within `mutate()` to add a `date_new` column with the nicely converted date. Then, I create new columns that contain only the year and month components of date for each row using the `year()` and `month()` functions from `lubridate`, which pull out only those components from Date data: 
+In this example, I use `ymd()` within `mutate()` to add a `date_new` column with the nicely converted date. Then, I create new columns that contain only the year and month components of date for each row using the `year()` and `month()` functions from `lubridate`, which pull out only those components from Date data:
 
 ```{r}
 # Run this code first (remember you can select lines you want to run, then press Cmd/Ctrl + Enter to run it): 
@@ -233,37 +236,42 @@ points_by_month
 
 #### 3C. On your own
 
-You will follow a similar exercise as above, with a few additional steps: 
+You will follow a similar exercise as above, with a few additional steps:
 
-Starting from the `lakers` dataset, create a new dataset called `gasol_hookshots` in which you: 
+Starting from the `lakers` dataset, create a new dataset called `gasol_hookshots` in which you:
 
-- Filter to only include observations (rows) if the player is Pau Gasol and **type** (shot type) is "hook"
-- Use `mutate()` to add (or update) the date column to "Date" class with `ymd()`
-- Add a new column that contains the month, parsed from the date created above with `month()`
-- Find the *number* of Gasol's hook shots recorded (not necessarily scored) by **month** (hint: `count(month)`) for the 2008 - 2009 season
+-   Filter to only include observations (rows) if the player is Pau Gasol and **type** (shot type) is "hook"
+-   Use `mutate()` to add (or update) the date column to "Date" class with `ymd()`
+-   Add a new column that contains the month, parsed from the date created above with `month()`
+-   Find the *number* of Gasol's hook shots recorded (not necessarily scored) by **month** (hint: `count(month)`) for the 2008 - 2009 season
 
 ```{r}
 # Your code here: 
 
-
+gasol_hookshots <- lakers %>% # make new subset
+  filter(player == "Pau Gasol", type == "hook") %>% # only pull results for Pau Gasol and hook shots
+  mutate(date = ymd(date)) %>% # change date value from numeric to date ymd format
+  mutate(month = month(date)) %>% # make new column parsed from the date column
+  count(month) # find number of results per month
+  
 ```
 
 ### 4. `dplyr::case_when()`
 
-Use `case_when()` as an `if_else` statement within `mutate()` to populate a new column based on entries in other columns. 
+Use `case_when()` as an `if_else` statement within `mutate()` to populate a new column based on entries in other columns.
 
-First, explore the built-in dataset `storms` (from the `dplyr` package). 
+First, explore the built-in dataset `storms` (from the `dplyr` package).
 
-Let's say I want to have a new column called "season" that contains: 
+Let's say I want to have a new column called "season" that contains:
 
-- If month is 12, 1, or 2: "winter"
-- If month is 3, 4, or 5: "spring"
-- If month is 6, 7 or 8: "summer"
-- If month is 9, 10 or 11: "fall" 
+-   If month is 12, 1, or 2: "winter"
+-   If month is 3, 4, or 5: "spring"
+-   If month is 6, 7 or 8: "summer"
+-   If month is 9, 10 or 11: "fall"
 
 This means I want to write what (in code) is usually called an "if-else" statement: If [this is true] then [do this], otherwise if [this is true] then [do this].
 
-Here, we'll use `dplyr::case_when()` to more easily write sequences of if-else statements to populate our new column. It exists *within* `mutate()`, which creates the new column - `case_when()` determines what's in it based on another variable. 
+Here, we'll use `dplyr::case_when()` to more easily write sequences of if-else statements to populate our new column. It exists *within* `mutate()`, which creates the new column - `case_when()` determines what's in it based on another variable.
 
 4A. Follow me
 
@@ -289,8 +297,7 @@ storm_season <- storms %>% # Start from storms data
 
 Create a new version of storms called `storms_danger` in which you add a new column `danger` where if the status matches "hurricane", then the danger column contains "high"; if the status is anything other than "hurricane", then the danger column contains "moderate". **Hint:** remember that when looking for a match, we use `==`.
 
-Note: If you add another condition within `case_when()` that is `TRUE ~ "some thing"`, then any entry that hasn't been specified by previous conditions will get that "catch all" statement. 
-
+Note: If you add another condition within `case_when()` that is `TRUE ~ "some thing"`, then any entry that hasn't been specified by previous conditions will get that "catch all" statement.
 
 ```{r}
 # Your code here: 
@@ -300,18 +307,13 @@ Note: If you add another condition within `case_when()` that is `TRUE ~ "some th
 
 ## 5. Practice version control w/git
 
-Once you've completed the above: 
+Once you've completed the above:
 
-- Knit your .Rmd
-- Stage all updated files (click box under 'Staged')
-- Commit with a concise, descriptive commit message
-- Pull to check for remote changes (this should say "Already up to date")
-- Push changes back to your repo
-- Once it's done, go back to the forked repo in your GitHub account, refresh, and ensure that your updates have been recorded & safely stored.
-
+-   Knit your .Rmd
+-   Stage all updated files (click box under 'Staged')
+-   Commit with a concise, descriptive commit message
+-   Pull to check for remote changes (this should say "Already up to date")
+-   Push changes back to your repo
+-   Once it's done, go back to the forked repo in your GitHub account, refresh, and ensure that your updates have been recorded & safely stored.
 
 ## END TASK 2!
-
-
-
-
