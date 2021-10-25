@@ -142,7 +142,8 @@ In the code chunk below, starting from the `mpg` data create a new data frame ca
 mpg_model_class <- mpg %>%
   unite(col = model_class,
         c(model, class),
-        sep = "WOOPWOOP")
+        sep = "-",
+        remove = FALSE)
 
 ```
 
@@ -176,6 +177,7 @@ In the code chunk below, use `ymd()` to convert a date that you choose in `YYYY-
 ymd("1995-08-02")
 ymd("1995/08/02")
 ymd(19950802)
+
 ```
 
 #### 3B. Follow me
@@ -201,8 +203,11 @@ In the code chunk below, create a vector (using `c()`, as above) stored as `some
 ```{r}
 # Your code here: 
 
-some_dates <- c(12312015, 03052009, 05201995)
-some_dates_converted <- myd(some_dates)
+some_dates <- c(11061972, 02142007,01301843)
+
+some_dates_converted <- mdy(some_dates)
+
+some_dates_converted
 
 class(some_dates_converted)
 ```
@@ -254,6 +259,9 @@ gasol_hookshots <- lakers %>% # make new subset
   mutate(month = month(date)) %>% # make new column parsed from the date column
   count(month) # find number of results per month
   
+
+gasol_hookshots
+
 ```
 
 ### 4. `dplyr::case_when()`
@@ -302,7 +310,15 @@ Note: If you add another condition within `case_when()` that is `TRUE ~ "some th
 ```{r}
 # Your code here: 
 
+# did not want to scroll to see what different storm types there were so I used the folowing code. Is there a better way to do this?
+storm_type <- storms %>%
+  group_by(status) %>%
+  count(status)
 
+# make storms_danger with new status column
+storms_danger <- storms %>%
+  mutate(danger = case_when(status == "hurricane" ~ "high", status %in% c("tropical depression", "tropical storm") ~ "moderate"))
+         
 ```
 
 ## 5. Practice version control w/git
