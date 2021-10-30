@@ -211,10 +211,10 @@ sw_sep_hair &lt;- starwars %&gt;% # Start with starwars
 <p>**Note: You should get a warning about one piece dropped. What happens to the name in Row 49, which contains two dashes?</p>
 <pre class="r"><code># Your code here: 
 
-sw_split_name &lt;- starwars %&gt;%
+sw_split_name &lt;- starwars %&gt;% # Make new dataset 
   separate(col = name, # Separate the names column
            into = c(&quot;name_1&quot;,&quot;name_2&quot;), # Into two columns &#39;name_1&#39; &amp; &#39;name_2&#39;
-           sep = &quot;-&quot;)
+           sep = &quot;-&quot;) # separate the column at the first `-`
 
 # Row 49 name = Ki-Adi-Mundi turns into name_1: Ki, name_2: Adi</code></pre>
 </div>
@@ -243,11 +243,11 @@ sw_sep_names &lt;- starwars %&gt;% # Start from starwars data
 <p>Make sure to <code>View()</code> the resulting data frame (remember: run <code>View()</code> in the Console, or click on the object name in the Environment) to ensure it worked as expected.</p>
 <pre class="r"><code># Your code here:
 
-sw_skin_sep &lt;- starwars %&gt;%
-  separate(col = skin_color,
-           into = c(&quot;skin_1&quot;, &quot;skin_2&quot;),
-           sep = &quot;,&quot;,
-           extra = &quot;merge&quot;,
+sw_skin_sep &lt;- starwars %&gt;% # make new dataset
+  separate(col = skin_color, # separate the `skin_color` column
+           into = c(&quot;skin_1&quot;, &quot;skin_2&quot;), # into two columns
+           sep = &quot;,&quot;, # at the first `,`
+           extra = &quot;merge&quot;, # if additional `,` then merge all following into second column
            remove = FALSE)</code></pre>
 </div>
 </div>
@@ -275,11 +275,11 @@ mpg_make_model &lt;- mpg %&gt;% # Start with mpg
 <p>In the code chunk below, starting from the <code>mpg</code> data create a new data frame called <code>mpg_model_class</code> with a new column called <code>model_class</code> that combines the <code>model</code> and <code>class</code> column information, separated by a dash “-”. Also add a line (similarly for <code>separate()</code> example above) that retains the original columns.</p>
 <pre class="r"><code># Your code here: 
 
-mpg_model_class &lt;- mpg %&gt;%
-  unite(col = model_class,
-        c(model, class),
-        sep = &quot;-&quot;,
-        remove = FALSE)</code></pre>
+mpg_model_class &lt;- mpg %&gt;% # make new dataset
+  unite(col = model_class, # with column that
+        c(model, class), #combines `model` and `class` columns into one
+        sep = &quot;-&quot;, # separate the united variables by a `-`
+        remove = FALSE) # do not remove original columns</code></pre>
 </div>
 </div>
 <div id="parsing-dates-with-lubridate" class="section level3">
@@ -328,13 +328,13 @@ my_dates_converted # Return my_dates_converted</code></pre>
 <p>In the code chunk below, create a vector (using <code>c()</code>, as above) stored as <code>some_dates</code> that contains three values that represent dates as numbers, in mdy format: 11061972, 02142007,01301843. Then in the next line, use <code>lubridate::mdy()</code> to return them in date format, storing as a vector <code>some_dates_converted</code>. Write a third line to check the class of that vector.</p>
 <pre class="r"><code># Your code here: 
 
-some_dates &lt;- c(11061972, 02142007,01301843)
+some_dates &lt;- c(11061972, 02142007,01301843) # make dataframe
 
-some_dates_converted &lt;- mdy(some_dates)
+some_dates_converted &lt;- mdy(some_dates) # convert to `Date` class
 
 some_dates_converted</code></pre>
 <pre><code>## [1] &quot;1972-11-06&quot; &quot;2007-02-14&quot; &quot;1843-01-30&quot;</code></pre>
-<pre class="r"><code>class(some_dates_converted)</code></pre>
+<pre class="r"><code>class(some_dates_converted) # check class</code></pre>
 <pre><code>## [1] &quot;Date&quot;</code></pre>
 </div>
 <div id="c.-follow-me" class="section level4">
@@ -445,8 +445,9 @@ storm_type &lt;- storms %&gt;%
   count(status)
 
 # make storms_danger with new status column
-storms_danger &lt;- storms %&gt;%
-  mutate(danger = case_when(status == &quot;hurricane&quot; ~ &quot;high&quot;, status %in% c(&quot;tropical depression&quot;, &quot;tropical storm&quot;) ~ &quot;moderate&quot;))</code></pre>
+storms_danger &lt;- storms %&gt;% # make new dataset 
+  mutate(danger = case_when(status == &quot;hurricane&quot; ~ &quot;high&quot;,
+                            status %in% c(&quot;tropical depression&quot;, &quot;tropical storm&quot;) ~ &quot;moderate&quot;)) # create new column `danger` with `high` if `hurricane` and `moderate` if `tropical depression` or `tropical storm`</code></pre>
 </div>
 </div>
 <div id="practice-version-control-wgit" class="section level2">

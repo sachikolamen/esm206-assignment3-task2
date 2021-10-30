@@ -59,10 +59,10 @@ Make sure to `View()` the resulting data frame (remember: run `View()` in the Co
 ```{r}
 # Your code here: 
 
-sw_split_name <- starwars %>%
+sw_split_name <- starwars %>% # Make new dataset 
   separate(col = name, # Separate the names column
            into = c("name_1","name_2"), # Into two columns 'name_1' & 'name_2'
-           sep = "-")
+           sep = "-") # separate the column at the first `-`
 
 # Row 49 name = Ki-Adi-Mundi turns into name_1: Ki, name_2: Adi
 ```
@@ -98,11 +98,11 @@ Make sure to `View()` the resulting data frame (remember: run `View()` in the Co
 ```{r}
 # Your code here:
 
-sw_skin_sep <- starwars %>%
-  separate(col = skin_color,
-           into = c("skin_1", "skin_2"),
-           sep = ",",
-           extra = "merge",
+sw_skin_sep <- starwars %>% # make new dataset
+  separate(col = skin_color, # separate the `skin_color` column
+           into = c("skin_1", "skin_2"), # into two columns
+           sep = ",", # at the first `,`
+           extra = "merge", # if additional `,` then merge all following into second column
            remove = FALSE)
 ```
 
@@ -139,11 +139,11 @@ In the code chunk below, starting from the `mpg` data create a new data frame ca
 ```{r}
 # Your code here: 
 
-mpg_model_class <- mpg %>%
-  unite(col = model_class,
-        c(model, class),
-        sep = "-",
-        remove = FALSE)
+mpg_model_class <- mpg %>% # make new dataset
+  unite(col = model_class, # with column that
+        c(model, class), #combines `model` and `class` columns into one
+        sep = "-", # separate the united variables by a `-`
+        remove = FALSE) # do not remove original columns
 
 ```
 
@@ -203,13 +203,13 @@ In the code chunk below, create a vector (using `c()`, as above) stored as `some
 ```{r}
 # Your code here: 
 
-some_dates <- c(11061972, 02142007,01301843)
+some_dates <- c(11061972, 02142007,01301843) # make dataframe
 
-some_dates_converted <- mdy(some_dates)
+some_dates_converted <- mdy(some_dates) # convert to `Date` class
 
 some_dates_converted
 
-class(some_dates_converted)
+class(some_dates_converted) # check class
 ```
 
 #### 3C. Follow me
@@ -316,8 +316,9 @@ storm_type <- storms %>%
   count(status)
 
 # make storms_danger with new status column
-storms_danger <- storms %>%
-  mutate(danger = case_when(status == "hurricane" ~ "high", status %in% c("tropical depression", "tropical storm") ~ "moderate"))
+storms_danger <- storms %>% # make new dataset 
+  mutate(danger = case_when(status == "hurricane" ~ "high",
+                            status %in% c("tropical depression", "tropical storm") ~ "moderate")) # create new column `danger` with `high` if `hurricane` and `moderate` if `tropical depression` or `tropical storm`
          
 ```
 
